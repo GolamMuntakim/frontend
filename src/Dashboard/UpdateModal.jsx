@@ -88,14 +88,14 @@ import UpdateForm from './UpdateForm'
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <DialogPanel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+                <DialogPanel className='w-full max-w-md transform overflow-hidden rounded-2xl glass p-6 text-left align-middle shadow-xl transition-all'>
                   <DialogTitle
                     as='h3'
-                    className='text-lg font-medium text-center leading-6 text-gray-900'
+                    className='text-lg font-medium text-center leading-6 text-white'
                   >
-                    Update Property Info
+                    Update your post
                   </DialogTitle>
-                  <div className='mt-2 w-full'>
+                  <div className='mt-0 w-full'>
                       {/* Update room form */}
                       <UpdateForm
                       handleSubmit={handleSubmit} 
@@ -106,8 +106,8 @@ import UpdateForm from './UpdateForm'
                         imageText={imageText}
                         ></UpdateForm>
                       </div>
-                  <hr className='mt-8 ' />
-                  <div className='mt-2 '>
+                 
+                  <div className='mt-0 '>
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-md border border-transparent bg-red-900 px-4 py-2 text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2'

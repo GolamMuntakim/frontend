@@ -1,9 +1,10 @@
+import Details from "./Details";
 
 
 const PostDetails = () => {
     return (
         <div>
-            djisd
+            <Details></Details>
         </div>
     );
 };

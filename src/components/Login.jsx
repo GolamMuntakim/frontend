@@ -98,7 +98,7 @@ const Login = () => {
      <input type="password"  name='password' autoComplete='new-password' id='password' placeholder="password" className="input input-bordered" required />
    </div>
    <div className="form-control mt-2">
-     <button className="btn btn-primary">Login</button>
+     <button className="btn bg-black text-white">Login</button>
      <small className='mt-2 text-center'>Don't have any account ? <span className='text-pretty text-gray-700 font-bold'><Link to="/register">Register</Link></span> </small>
    </div>
  </form>

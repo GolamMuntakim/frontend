@@ -15,7 +15,7 @@ const PostCard = ({post}) => {
                     <div className="flex w-full justify-end">
                       <Link 
                       to={`/postDetails/${post._id}`}
-                      >  <button className="btn bg-white  text-black font-bold  border-none"><FaArrowRight /></button></Link>
+                      >  <button className="btn bg-transparent  text-white font-bold  border-none"><FaArrowRight /></button></Link>
                     </div>
                 </div>
             </div>

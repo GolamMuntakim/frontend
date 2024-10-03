@@ -1,8 +1,10 @@
-// import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 import { useQuery } from '@tanstack/react-query'
 import Swal from "sweetalert2";
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import { FaArrowLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const ManageUser = () => {
@@ -83,51 +85,55 @@ const ManageUser = () => {
       if(isLoading) return <LoadingSpinner></LoadingSpinner>
   return (
     <>
-      <div className='container mx-auto px-4 sm:px-8'>
-        {/* <Helmet>
+    <Helmet>
           <title>Manage Users</title>
-        </Helmet> */}
-        <div className='py-8'>
-            <h1>Total User : {users?.length}</h1>
-          <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-            <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
-              <table className='min-w-full leading-normal'>
+        </Helmet>
+      <div className='container glass mx-auto lg:px-4 sm:px-8 w-[400px] mt-10  lg:w-full flex item-center justify-center ml-[5%] lg:ml-[20%] text-white p-8 '>
+        
+        <div className='lg:py-8   w-full'>
+            <div className='text-white flex justify-between'>
+               <Link to="/"> <h1><FaArrowLeft /></h1></Link>
+            <h1 >Total User : {users?.length}</h1>
+            </div>
+          <div className='lg:-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+            <div className='inline-block min-w-full shadow rounded-lg overflow-hidden overflow-x-auto'>
+              <table className='min-w-full leading-normal '>
                 <thead>
                   <tr>
                   <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3   border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                       Name
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                       Email
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3   border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                       Role
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3   border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                       Make Admin
                     </th>
 
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900 border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                       Block User
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-green-900  border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3   border-b border-gray-200 text-white  text-left text-sm uppercase font-normal'
                     >
                     Delete User
                     </th>
@@ -136,36 +142,35 @@ const ManageUser = () => {
                 <tbody>
                 {
                     users.map(user=>  <tr key={user._id}>
-                        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                       <p className='text-gray-900 whitespace-no-wrap'>{user?.name || user?.displaName}</p>
+                        <td className='px-5 py-5  text-sm'>
+                       <p className='text-white whitespace-no-wrap'>{user?.name || user?.displaName}</p>
                      </td>
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                       <p className='text-gray-900 whitespace-no-wrap'>{user?.email}</p>
+                     <td className='px-5 py-5  text-sm'>
+                       <p className='text-white whitespace-no-wrap'>{user?.email}</p>
                      </td>
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                       <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
+                     <td className='px-5 py-5  text-sm'>
+                       <p className='text-white whitespace-no-wrap'>{user?.role}</p>
                      </td>
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+                     <td className='px-5 py-5  text-sm'>
                        <button
                        disabled={user.role === 'blocked'}
-                        onClick={()=>handleMakeAdmin(user)} className="btn bg-blue-900 text-white ">
-                            {/* {user.role === 'blocked' ? 'Blocked' : ''} */}
+                        onClick={()=>handleMakeAdmin(user)} className="btn btn-outline btn-info text-white ">
                             {user.role === 'admin'  ? 'Admin' : 'Make Admin'}
                             </button>
                        
                      </td>
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                     <button onClick={()=>handleBlock(user)} className="btn bg-black text-white ">  
+                     <td className='px-5 py-5  text-sm'>
+                     <button onClick={()=>handleBlock(user)} className="btn  btn-outline btn-success text-white ">  
                         {user.role === 'blocked' ? 'Blocked' : 'Block user'}
                      </button>
                       
                      </td>
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                     <button onClick={()=>handleDelete(user)} className="btn bg-red-900 text-white ">Delete</button>
+                     <td className='px-5 py-5  text-sm'>
+                     <button onClick={()=>handleDelete(user)} className="btn btn-outline btn-error text-white ">Delete</button>
                       
                      </td>
                
-                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+                     <td className='px-5 py-5  text-sm'>
                      </td>
                    </tr>)
                 }

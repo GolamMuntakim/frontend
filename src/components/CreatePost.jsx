@@ -7,6 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { imageUpload } from "../api/utilities";
 import useRole from "../hooks/useRole";
+import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -16,7 +18,6 @@ const CreatePost = () => {
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const [role, isLoading] = useRole()
-    // const axiosSecure = useAxiosSecure()
     const [loading, setLoading] = useState(false)
     const {mutateAsync} = useMutation({
         mutationFn : async (postData)=>{
@@ -65,12 +66,16 @@ const CreatePost = () => {
     const handleImage = image => {
         setImageText(image.name)
     }
+    if (isLoading) return <LoadingSpinner />
     return (
         <div>
-            <div className='w-full  flex flex-col justify-center items-center text-gray-800 rounded-xl mt-20'>
+              <Helmet>
+        <title>Create Post</title>
+      </Helmet>
+            <div className='w-full  flex flex-col justify-center items-center text-gray-800 rounded-xl mt-20 p-2'>
             <div className=" sm:p-12  text-black">
 	<div className="flex flex-col items-center space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-		<img src={user?.photoURL} alt="" className="self-center flex-shrink-0 w-20 h-20 border rounded-full md:justify-self-start bg-gray-500 border-gray-700" />
+		<img src={user?.photoURL} alt="" className=" flex-shrink-0 w-10 h-10 border rounded-full md:justify-self-start bg-gray-500 border-gray-700" />
 		<div className="flex flex-col">
 			<h4 className="text-lg font-semibold text-center md:text-left">{user?.displayName}</h4>
 		</div>
@@ -84,7 +89,7 @@ const CreatePost = () => {
                                     Place Title
                                 </label>
                                 <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-blue-500 focus:outline-blue-500 rounded-md '
+                                    className='w-full px-4 py-3 text-gray-800 border border-none bg-slate-300 focus:outline-none rounded-md '
                                     name='title'
                                     id='title'
                                     type='text'
@@ -97,7 +102,7 @@ const CreatePost = () => {
                                     Place Location
                                 </label>
                                 <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-blue-500 focus:outline-blue-500 rounded-md '
+                                    className='w-full px-4 py-3 text-gray-800 border border-none bg-slate-300 focus:outline-none rounded-md '
                                     name='location'
                                     id='location'
                                     type='text'
@@ -111,7 +116,7 @@ const CreatePost = () => {
                                             <label>
 
                                                 <input
-                                                    className='text-sm cursor-pointer  hidden'
+                                                    className='text-sm cursor-pointer  hidden '
                                                     type='file'
                                                     name='image'
                                                     onChange={e => handleImage(e.target.files[0])}
@@ -120,7 +125,7 @@ const CreatePost = () => {
                                                     hidden
                                                 />
                                                 <div className='  font-semibold cursor-pointer p-1 px-3 '>
-                                                    {imageText.length > 20 ? imageText.split('.')[0].slice(0, 15) + '....' + imageText.split('.')[1] : < FaCamera className="text-blue-800 text-4xl"/>
+                                                    {imageText.length > 20 ? imageText.split('.')[0].slice(0, 15) + '....' + imageText.split('.')[1] : < FaCamera className="text-black text-4xl"/>
                                                     }
                                                 </div>
                                             </label>
@@ -134,7 +139,7 @@ const CreatePost = () => {
                                     Place Description
                                 </label>
                                 <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-blue-500 focus:outline-blue-500 rounded-md input-lg  '
+                                    className='w-full px-4 py-3 text-gray-800 border border-none bg-slate-300 focus:outline-none rounded-md input-lg  '
                                     name='description'
                                     id='description'
                                     type='text'
@@ -149,7 +154,7 @@ const CreatePost = () => {
                     <button
                    disabled={role === 'blocked'}
                         type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500'
+                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-black'
                     >
                         {role === 'blocked' ? "you can not post" : "Post Your Blog"}
 

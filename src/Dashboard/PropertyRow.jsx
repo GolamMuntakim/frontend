@@ -9,8 +9,8 @@ const PropertyRow = ({ post, refetch,handleDelete ,id}) => {
     
   return (
     <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <div className='flex items-center'>
+      <td className='px-5 py-5   text-sm flex justify-center items-center w-full'>
+        <div className='flex items-center w-full'>
           <div className='flex-shrink-0'>
             <div className='block relative'>
               <img
@@ -24,33 +24,33 @@ const PropertyRow = ({ post, refetch,handleDelete ,id}) => {
       </td>
       <td>
       <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>{post?.title}</p>
+            <p className='text-white whitespace-no-wrap'>{post?.title}</p>
           </div>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>{post?.location}</p>
+      <td className='px-5 py-5  text-sm'>
+        <p className='text-white whitespace-no-wrap'>{post?.location}</p>
       </td>
      
      
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5  text-sm'>
         <button 
     
         onClick={()=>{handleDelete(id)}}
          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-white leading-tight'>
           <span
             aria-hidden='true'
-            className='absolute inset-0 bg-red-900  '
+            className='absolute inset-0 bg-black rounded-md  '
           ></span>
           <span  className='relative'>Delete</span>
         </button>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5  text-sm'>
         <button 
         onClick={()=> setIsEditModal(true)}
-         className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-white leading-tight'>
+         className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-white leading-tight mr-4'>
           <span
             aria-hidden='true'
-            className='absolute inset-0 bg-green-900 '
+            className='absolute inset-0 bg-green-900 rounded-md'
           ></span>
           <span className='relative'>Update</span>
         </button>

@@ -24,6 +24,8 @@ import UserRoute from './Route/UserRoute.jsx'
 import ManageUser from './Dashboard/ManageUser.jsx'
 import Home from './components/Home.jsx'
 import {  HelmetProvider } from 'react-helmet-async';
+import Details from './components/Details.jsx'
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx'
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -32,9 +34,9 @@ const router = createBrowserRouter([
     errorElement:<Error></Error>,
     children:[
       {path: "/", element: <Home></Home>},
-    {path: "create-post", element:<CreatePost></CreatePost>},
+    {path: "create-post", element:<PrivateRoute><CreatePost></CreatePost></PrivateRoute>},
     {path: "all-post", element:<AllPost></AllPost>},
-    {path:'postDetails/:id',element:<PostDetails></PostDetails>},
+    {path:'postDetails/:id',element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>},
       
     ]
   },
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
     {
       path:'users',
       element:<UserRoute> <ManageUser></ManageUser></UserRoute>
+    },
+    {
+      path:'postDetails/:id',
+      element:<Details></Details>
     },
    ]
   }

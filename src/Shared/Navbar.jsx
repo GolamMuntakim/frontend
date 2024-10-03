@@ -6,7 +6,7 @@ const Navbar = () => {
     const {user ,logOut} = useAuth()
     return (
         <div>
-            <div className="navbar  top-0 z-10 fixed bg-black">
+            <div className="navbar  top-0 z-10 fixed bg-black w-full lg:w-full">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,13 +46,13 @@ const Navbar = () => {
     <div className=" avatar">
   <div className="w-14 rounded-full">
     <img
-    src={user && user.photoURL ? user.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+    src={user && user.photoURL ? user.photoURL : "image/avatar.webp"}
     
      />
   </div>
 </div>
 </summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow ">
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-40 lg:w-52 p-2 shadow ">
   {user ? (
                         <>
                         <div

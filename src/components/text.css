@@ -1,5 +1,5 @@
 #main{
-    background-image: url('image/4.avif');
+    background-image: url('/image/4.avif');
     background-size:  100% 100%;
     background-clip: text;
     -WebKit-background-clip: text;
