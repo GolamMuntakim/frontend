@@ -55,44 +55,44 @@ const AddedProperty = () => {
         <title>My post</title>
       </Helmet>
 
-      <div className='container glass mx-auto lg:px-4 sm:px-8 w-[400px] mt-10  lg:w-[700px] flex item-center justify-center ml-[5%] lg:ml-[50%] text-white  p-8 '>
-        <div className='lg:py-8   w-full '>
+      <div className='lg:container glass  lg:px-4 sm:px-8 w-[350px] md:w-[650px] mx-auto p-4 mt-10  lg:w-full flex item-center justify-center md:ml-[10%]  lg:ml-[50%] text-white  lg:p-8 '>
+        <div className='lg:py-8 w-full  lg:w-full '>
            <div className='flex justify-between'>
            <Link to="/"><h1><FaArrowLeft /></h1></Link>
            <h1>My Total post: {filteredPosts.length}</h1>
            </div>
-          <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 lg:py-4 overflow-x-auto flex item-center justify-center w-full'>
+          <div className='lg:-mx-4 sm:-mx-8 lg:px-4 sm:px-8 lg:py-4 overflow-x-auto flex item-center justify-center w-full'>
             <div className='inline-block w-full lg:w-full shadow rounded-lg overflow-hidden overflow-x-auto'>
               <table className='w-full lg:w-full leading-normal'>
                 <thead className=''>
                   <tr className=''>
                     <th
                       scope='col'
-                      className='px-5 py-3  text-white border-b border-gray-200  text-left text-sm uppercase font-normal'
+                      className='lg:px-5 lg:py-3  text-white border-b border-gray-200  text-left text-sm uppercase font-normal'
                     >
                       Image
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  text-white  border-b border-gray-200  text-left text-sm uppercase font-normal'
+                      className='lg:px-5 lg:py-3  text-white  border-b border-gray-200  text-left text-sm uppercase font-normal'
                     >
                       Title
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  text-white  border-b border-gray-200   text-left text-sm uppercase font-normal'
+                      className='lg:px-5 lg:py-3  text-white  border-b border-gray-200   text-left text-sm uppercase font-normal'
                     >
                       Location
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  text-white  border-b border-gray-200   text-left text-sm uppercase font-normal'
+                      className='lg:px-5 lg:py-3  text-white  border-b border-gray-200   text-left text-sm uppercase font-normal'
                     >
                       Delete
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  text-white  border-b border-gray-200  text-left text-sm uppercase font-normal'
+                      className='lg:px-5 lg:py-3  text-white  border-b border-gray-200  text-left text-sm uppercase font-normal'
                     >
                       Update
                     </th>

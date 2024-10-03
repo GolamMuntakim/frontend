@@ -2,6 +2,8 @@
 # website url : https://ssl-blog-bd.netlify.app/
 # Frontend github link : https://github.com/GolamMuntakim/frontend
 # Backend Github link : https://github.com/GolamMuntakim/backend
+# Admin email : admin@gmail.com
+# Admin password : Admin123*
 # Features :
 1.Blocking Feature , admin can block user
 2.Searching functionality

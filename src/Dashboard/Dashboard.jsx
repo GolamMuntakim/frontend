@@ -8,7 +8,7 @@ import Block from "./Block";
 const Dashboard = () => {
     const [role, isLoading] = useRole()
     return (
-        <div className="relative h-screen md:flex flex justify-center items-center w-full lg:w-full  bg-black">
+        <div className="relative min-h-screen w-full lg:p-10 md:flex flex justify-center items-center lg:w-full  bg-black ">
           <div>
             {role === 'user' && <AddedProperty></AddedProperty>} 
             {role === 'blocked' && <Block></Block>} 

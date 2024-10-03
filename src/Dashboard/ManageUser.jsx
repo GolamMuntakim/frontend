@@ -88,7 +88,7 @@ const ManageUser = () => {
     <Helmet>
           <title>Manage Users</title>
         </Helmet>
-      <div className='container glass mx-auto lg:px-4 sm:px-8 w-[400px] mt-10  lg:w-full flex item-center justify-center ml-[5%] lg:ml-[20%] text-white p-8 '>
+      <div className='lg:container glass  lg:px-4 sm:px-8  w-[300px] md:w-[600px] mx-auto p-4 mt-10  lg:w-full flex item-center justify-center ml-[2%] md:ml-[5%]  lg:ml-[20%] text-white  lg:p-8  '>
         
         <div className='lg:py-8   w-full'>
             <div className='text-white flex justify-between'>
