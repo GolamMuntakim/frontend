@@ -2,6 +2,10 @@
 # website url : https://ssl-blog-bd.netlify.app/
 # Frontend github link : https://github.com/GolamMuntakim/frontend
 # Backend Github link : https://github.com/GolamMuntakim/backend
+# Features :
+1.Blocking Feature , admin can block user
+2.Searching functionality
+3. User and admin Dashboard, admin can make user admin .
 # How to set up the project : 
 * Forntend : 
 1. clone the project from guthub using git clone .
