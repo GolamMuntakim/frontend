@@ -1,18 +1,73 @@
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { FaCamera } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { imageUpload } from "../api/utilities";
+import useRole from "../hooks/useRole";
+
 
 
 const CreatePost = () => {
     const [imageText, setImageText] = useState('')
     const { user } = useAuth()
-    console.log(user)
+    const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
+    const [role, isLoading] = useRole()
+    // const axiosSecure = useAxiosSecure()
+    const [loading, setLoading] = useState(false)
+    const {mutateAsync} = useMutation({
+        mutationFn : async (postData)=>{
+            const {data} = await axiosSecure.post(`/post`, postData)
+            return data
+        },
+        onSuccess : ()=>{
+            console.log('Data saved successfully')
+            toast.success('Your post successfully')
+            navigate('/dashboard')
+            setLoading(false)
+        }
+    })
+    const handleSubmit = async e =>{
+        e.preventDefault()
+        setLoading(true)
+        const form = e.target 
+        const email = user?.email
+        const location = form.location.value 
+        const description = form.description.value 
+        const title = form.title.value 
+        const status = "pending"
+        const image = form.image.files[0]
+        const users = {
+            name : user?.displayName,
+            image : user?.photoURL,
+            email:user?.email,
+           
+        }
+        try{
+            const image_url = await imageUpload(image)
+            const propertyData = {
+                location, title,description,status,image:image_url ,users,email
+            }
+            console.table(propertyData)
+
+            //post request to server
+            await mutateAsync(propertyData)
+        }catch(err){
+            console.log(err)
+            toast.error(err.message)
+            setLoading(false)
+        }
+        
+    }
     const handleImage = image => {
         setImageText(image.name)
     }
     return (
         <div>
-            <div className='w-full  flex flex-col justify-center items-center text-gray-800 rounded-xl '>
+            <div className='w-full  flex flex-col justify-center items-center text-gray-800 rounded-xl mt-20'>
             <div className=" sm:p-12  text-black">
 	<div className="flex flex-col items-center space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
 		<img src={user?.photoURL} alt="" className="self-center flex-shrink-0 w-20 h-20 border rounded-full md:justify-self-start bg-gray-500 border-gray-700" />
@@ -21,9 +76,7 @@ const CreatePost = () => {
 		</div>
 	</div>
 </div>
-                <form
-                //    onSubmit={handleSubmit}
-                >
+                <form onSubmit={handleSubmit}  >
                     <div className=''>
                         <div className=' flex items-center justify-center gap-2'>
                             <div className=' text-sm'>
@@ -94,10 +147,11 @@ const CreatePost = () => {
                     </div>
 
                     <button
+                   disabled={role === 'blocked'}
                         type='submit'
                         className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500'
                     >
-                        Post Your Blog
+                        {role === 'blocked' ? "you can not post" : "Post Your Blog"}
 
                     </button>
                 </form>

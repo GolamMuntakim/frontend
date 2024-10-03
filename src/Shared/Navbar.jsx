@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 
@@ -6,7 +6,7 @@ const Navbar = () => {
     const {user ,logOut} = useAuth()
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar  top-0 z-10 fixed bg-black">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,24 +26,25 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Home</a></li>
-        <li><a>Item 3</a></li>
+       <li><a><Link to="/">Home</Link></a></li>
+      <li><a><Link to="/all-post">All Post</Link></a></li>
+      <li><a><Link to="/create-post">Create Post</Link></a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link to="/" className="btn btn-ghost text-xl">SSL<span className="text-red-800">Blog</span></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a><Link to="/">Home</Link></a></li>
-      <li><a>All Post</a></li>
-      <li><a><Link to="/create-post">Create Post</Link></a></li>
+      <li><a> <NavLink to='/' style={({isActive})=>(isActive?{background:"white",padding:"7px",borderRadius:"30px",  color:"black", }:{color:"white"})}>Home</NavLink></a></li>
+      <li><a><NavLink to="/all-post" style={({isActive})=>(isActive?{background:"white",padding:"7px",borderRadius:"30px",  color:"black", }:{color:"white"})}>All Post</NavLink></a></li>
+      <li><a><NavLink to="/create-post" style={({isActive})=>(isActive?{background:"white",padding:"7px",borderRadius:"30px",  color:"black", }:{color:"white"})}>Create Post</NavLink></a></li>
     </ul>
   </div>
  <div className="navbar-end">
  <details className="dropdown dropdown-end">
-  <summary className="btn w-4 rounded-full m-1">
-    <div className="avatar">
-  <div className="w-10 rounded-full">
+  <summary className="btn  w-2 rounded-full mr-2">
+    <div className=" avatar">
+  <div className="w-14 rounded-full">
     <img
     src={user && user.photoURL ? user.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
     
@@ -58,7 +59,7 @@ const Navbar = () => {
                         
                         className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'
                       >
-                       {user?.displayName.split('@')[0].substring(0, 8)}
+                       {user?.displayName}
                       </div>
   
                           <Link
